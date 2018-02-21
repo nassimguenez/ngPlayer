@@ -33,13 +33,20 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:orientation="horizontal">
 
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
                 <Button
                     android:id="@+id/play_pause_button"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/play" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
         </LinearLayout>

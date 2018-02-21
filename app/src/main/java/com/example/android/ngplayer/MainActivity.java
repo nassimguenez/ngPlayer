@@ -11,7 +11,7 @@ import android.widget.SeekBar;
 public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private SeekBar seekBar;
-
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+//Make sure you update Seekbar on UI thread
+        MainActivity.this.runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (mediaPlayer != null) {
+                    int mCurrentPosition = mediaPlayer.getCurrentPosition();
+                    seekBar.setProgress(mCurrentPosition);
+                }
+                mHandler.postDelayed(this, 1000);
+            }
+        });
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
